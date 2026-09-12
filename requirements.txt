@@ -1,0 +1,32 @@
+# Зависимости MusicBox (Python 3.10+). Установка: pip install -r requirements.txt
+
+# Telegram-бот
+aiogram>=3.7,<4
+
+# Веб-сервер: API и раздача Mini App
+fastapi>=0.110
+uvicorn[standard]>=0.29
+
+# База данных (SQLite в асинхронном режиме)
+aiosqlite>=0.20
+
+# Нечёткий поиск (опечатки, смена раскладки)
+rapidfuzz>=3.6
+
+# Настройки и схемы данных
+pydantic>=2.6
+pydantic-settings>=2.2
+
+# HTTP-клиент: потоковая отдача аудио из Telegram
+httpx>=0.27
+
+# Разбор multipart-запросов FastAPI (загрузка файлов)
+python-multipart
+
+# Опционально: чтение ID3-тегов у загружаемых файлов.
+# Без пакета метаданные берутся из данных Telegram и имени файла.
+mutagen>=1.47
+
+# Опционально: поиск аудио в публичных каналах Telegram (TELEGRAM_SEARCH_ENABLED=true).
+# Без пакета поиск отключается, пересылка аудио боту продолжает работать.
+telethon>=1.36

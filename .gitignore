@@ -1,0 +1,45 @@
+# --- Секреты и локальные настройки ---
+.env
+.env.local
+frontend/.env
+frontend/.env.local
+*.session
+*.session-journal
+
+# --- Данные приложения (база SQLite, загрузки, логи) ---
+data/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.log
+logs/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- Frontend ---
+node_modules/
+frontend/dist/
+frontend/node_modules/
+frontend/.vite/
+npm-debug.log*
+
+# --- Редакторы и ОС ---
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

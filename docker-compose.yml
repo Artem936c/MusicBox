@@ -1,0 +1,34 @@
+# =============================================================================
+# MusicBox в Docker Compose.
+# Перед первым запуском: скопируйте .env.example в .env и заполните значения.
+#   docker compose up -d --build      — собрать и запустить
+#   docker compose logs -f musicbox   — смотреть логи
+#   docker compose down               — остановить (данные в ./data сохраняются)
+# =============================================================================
+
+services:
+  musicbox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: musicbox:latest
+    container_name: musicbox
+    env_file: .env
+    environment:
+      # Пути внутри контейнера: база — в томе, фронтенд — из образа.
+      DATABASE_PATH: /app/data/musicbox.db
+      FRONTEND_DIST: /app/frontend/dist
+      API_HOST: 0.0.0.0
+      API_PORT: "8000"
+    volumes:
+      # База данных и резервные копии остаются на хосте.
+      - ./data:/app/data
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    stop_grace_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
